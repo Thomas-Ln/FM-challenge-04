@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <title>Frontend Mentor | Intro component with sign up form</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href='https://fonts.googleapis.com/css?family=Poppins:200,300,400,600' rel='stylesheet'>
+  <style>
+    footer { margin-top: 3rem;  }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    /*---- General ----*/
+
+    :root {
+      font-family: 'Poppins';
+      font-size: 16px;
+      --red: hsl(0, 100%, 74%);
+      --green: hsl(154, 59%, 51%);
+      --softRed: hsl(0, 93%, 68%);
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0;
+      background-image: url('images/bg-intro-desktop.png');
+      background-color: salmon;
+    }
+
+    main {
+      display: flex;
+      height: 80%;
+      width: 70%;
+      margin: auto;
+    }
+
+    header, section {
+      margin: auto;
+      flex-basis: 50%;
+    }
+
+    button,
+    h1, h2 {
+      color: white;
+    }
+
+    button, form, input {
+      border-radius: 8pt;
+      font-size: 1.3rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem 2rem;
+      border-width: 0;
+      cursor: pointer;
+    }
+
+    b {
+      font-weight: bold;
+    }
+
+    /*---- Media Queries ----*/
+
+    /* less than 1000px */
+    @media screen and (max-width: 1000px) {
+      header, section {
+        margin: 0 !important;
+      }
+    }
+
+    /* less than 800px */
+    @media screen and (max-width: 800px) {
+      :root {
+        font-size: 13px !important;
+      }
+
+      main {
+        flex-direction: column;
+        width: 90% !important;
+      }
+
+      header {
+        margin-bottom: 2rem !important;
+        padding: 0 !important;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem !important;
+      }
+
+      .invalid {
+        white-space: normal !important;
+      }
+    }
+
+    /*---- Header Intro ----*/
+
+    header {
+      height: 50%;
+      padding-right: 4rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+   /*---- Form ----*/
+
+    .ad {
+      margin-bottom: 1.5rem;
+      background-color: #5D54A3;
+      box-shadow: 0px 8px 2px 0px rgba(50, 50, 50, 0.2);
+    }
+
+    .ad i {
+      color: #E7E7E7;
+    }
+
+    [name= contact] {
+      padding: 2rem;
+      background-color: white;
+    }
+
+    [name= contact] input {
+      width: -moz-available;
+      width: -webkit-fill-available;
+      width: fill-available;
+      margin-bottom: 1.4rem;
+      padding: 0.8rem;
+    }
+
+    .invalid {
+      transition: all 0.5s ease;
+      display: none;
+      position: relative;
+      bottom: 1rem;
+      float: right;
+      font-size: 1rem;
+      color: red;
+      white-space: nowrap;
+    }
+
+    input:not(:focus):invalid + span {
+      display: block;
+    }
+
+    input:not(:focus):invalid {
+      transition: background 0.5s ease;
+      border: 2px solid red;
+      background-image: url(images/icon-error.svg);
+      background-repeat: no-repeat;
+      background-position: right;
+      background-origin: content-box;
+    }
+
+    [type=submit] {
+      transition: all ease 0.5s;
+      margin-top: 0;
+      text-transform: uppercase;
+      background-color: #37CC8A;
+      border-bottom: 4px solid #3EB37F;
+      font-weight: bold;
+    }
+
+    [type=submit]:hover {
+      transition: all ease 0.5s;
+      background-color: #77E2B4;
+      border-bottom-color: #7DC4A4;
+    }
+
+    .disclaimer   {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding-top: 2rem;
+      font-size: 12px;
+    }
+
+    .disclaimer a {
+      color: salmon;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>Learn to code by watching others</h1>
+      <h2>
+        See how experienced developers solve problems in real-time.
+        <br />
+        Watching scripted tutorials is great,
+        but understanding how developers think is invaluable.
+      </h2>
+    </header>
+
+    <section>
+      <button class="ad"><b>Try it free 7 days</b> <i>then $20/mo. thereafter</i></button>
+
+      <form name="contact" method="post" action="#">
+        <!-- FIRSTNAME -->
+        <input name="firstname" type="text" placeholder="First Name" minlength="1"/>
+        <span class="invalid">First name cannot be empty</span>
+        <!-- LASTNAME -->
+        <input name="lastname" type="text" placeholder="Last Name" minlength="1"/>
+        <span class="invalid">Last name cannot be empty</span>
+        <!-- EMAIL -->
+        <input name="email" type="email" placeholder="Email Address"/>
+        <span class="invalid">Looks like this is not an email</span>
+        <!-- PASSWORD -->
+        <input name="password" type="password" placeholder="Password" minlength="15"/>
+        <span class="invalid">Password must contain at least 15 characters</span>
+
+        <button type="submit">Claim your free trial</button>
+        <span class="disclaimer">
+          By clicking the button, you are agreeing to our
+          <a href="#disclaimer">Terms and Services</a>
+        </span>
+      </form>
+
+      <footer>
+        <p class="attribution">
+          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+          Coded by <a href="#">Your Name Here</a>.
+        </p>
+      </footer>
+    </section>
+  </main>
+
+  <script type="text/javascript">
+  const contactForm   = document.querySelector('[name=contact]');
+  const contactInputs = document.querySelectorAll('[name=contact] input');
+
+  //check if inputs are not empty
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    contactInputs.forEach((e) =>
+      (!e.length) ? e.required = true : ''
+    );
+  });
+
+  </script>
+</body>
+
+</html>
